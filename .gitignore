@@ -1,0 +1,8 @@
+.vs/*
+src/LBTester/bower_components/*
+src/LBTester/node_modules/*
+src/LBTester/wwwroot/lib/*
+src/LBTester/wwwroot/bin/*
+src/LBTester/Properties/*
+*.kproj.user
+startup.prof

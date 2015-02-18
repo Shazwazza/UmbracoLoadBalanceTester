@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Umbraco load balancing test</h1>
+    <p class="lead">Monitoring to ensure that all sites involved in the LB scenario are up-to-date</p>
+</div>
+
+<div ng-controller="LbTesterCtrl">
+    <div class="row">
+        <div class="col-md-12">                       
+            <form ng-if="currentPageId!=null" class="navbar-form navbar-left" role="search" ng-submit="checkStatus(currentPageId)">
+                Current page id published: {{currentPageId}}
+                <button type="submit" class="btn btn-default">Re-check</button>
+            </form>
+        </div>        
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-4" ng-repeat="server in servers">
+            <h2>Server {{$index}}</h2>
+            <form role="search" ng-submit="publishContent($index)">
+                <button type="submit" class="btn btn-default">Create and publish document</button>
+            </form>
+            <ul>
+                <li ng-class="{'text-danger': dbError, 'text-success': !dbError}">Total db published: {{server.totalPublished.DatabasePublished}}</li>
+                <li ng-class="{'text-danger': cacheError, 'text-success': !cacheError}">Total cache published: {{server.totalPublished.CachePublished}}</li>
+            </ul>
+            <div ng-repeat="status in ['pageStatus', 'internalSearchStatus', 'externalSearchStatus']"
+                 ng-class="{'alert-danger': server[status]=='error', 'alert-success': server[status]=='ok', 'alert-info': server[status]!='ok' && server[status]!='error'}"
+                 class="alert"
+                 role="alert">
+                {{status}}: {{server[status]}}
+            </div>
+           
+        </div>
+        
+    </div>
+</div>
+

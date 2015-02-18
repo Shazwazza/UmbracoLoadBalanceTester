@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html ng-app="lbTester">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Umbraco load balance testing</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+
+</head>
+<body>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+    <script src="~/lib/jquery/js/jquery.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.js"></script>
+    <script src="~/lib/angular/angular.js"></script>
+    <script src="~/js/controllers.js"></script>
+
+</body>
+</html>
